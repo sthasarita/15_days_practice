@@ -292,5 +292,5 @@ pyrightconfig.json
 # Ignore all local history of files
 .history
 .ionide
-.15 days practice.pdf
+.15 days practice
 # End of https://www.toptal.com/developers/gitignore/api/jupyternotebooks,python,visualstudiocode,django
