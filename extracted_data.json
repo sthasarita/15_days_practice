@@ -1,0 +1,15 @@
+{
+    "emails": [
+        "ram@gmail.com",
+        "sita123@yahoo.com",
+        "info@example.com"
+    ],
+    "phone_numbers": [
+        "9841234567",
+        "9812345678"
+    ],
+    "urls": [
+        "https://www.google.com",
+        "https://www.python.org"
+    ]
+}
