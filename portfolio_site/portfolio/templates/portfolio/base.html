@@ -1,0 +1,56 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ profile.name }} — Portfolio{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="{% url 'home' %}" class="logo" style="color:white">{{ profile.name }}</a>
+      <nav class="nav-links">
+        <a href="{% url 'home' %}#home">Home</a>
+        <a href="{% url 'home' %}#about">About</a>
+        <a href="{% url 'home' %}#experience">Experience</a>
+        <a href="{% url 'home' %}#training">Training</a>
+        <a href="{% url 'home' %}#projects">Projects</a>
+        <a href="{% url 'home' %}#contact" class="nav-cta">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </div>
+  </header>
+
+  {% if messages %}
+    <div class="container">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>&copy; {% now "Y" %} {{ profile.name }}. All rights reserved.</p>
+      <div class="socials">
+        {% if profile.socials.github %}<a href="{{ profile.socials.github }}" target="_blank">GitHub</a>{% endif %}
+        {% if profile.socials.linkedin %}<a href="{{ profile.socials.linkedin }}" target="_blank">LinkedIn</a>{% endif %}
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle) { navToggle.addEventListener('click', () => navLinks.classList.toggle('open')); }
+  </script>
+</body>
+</html>

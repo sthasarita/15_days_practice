@@ -1,0 +1,19 @@
+{% extends "portfolio/base.html" %}
+{% block title %}{{ project.title }} — {{ profile.name }}{% endblock %}
+{% block content %}
+  <section class="section">
+    <div class="container project-detail">
+      <a href="{% url 'home' %}#projects" class="back-link">&larr; Back to projects</a>
+      <h1>{{ project.title }}</h1>
+      {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-detail-img">{% endif %}
+      {% if project.description %}<p class="project-detail-desc">{{ project.description }}</p>{% endif %}
+      <div class="tech-list">
+        {% for tech in project.tech_list %}<span class="tech-badge">{{ tech }}</span>{% endfor %}
+      </div>
+      <div class="project-links">
+        {% if project.project_url %}<a href="{{ project.project_url }}" class="btn btn-primary" target="_blank">View Live</a>{% endif %}
+        {% if project.source_url %}<a href="{{ project.source_url }}" class="btn btn-outline" target="_blank">View Source</a>{% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
